@@ -1,4 +1,13 @@
 services:
+  mongo:
+    image: mongo:6
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./infra/mongo:/docker-entrypoint-initdb.d:ro
+
   usuarios:
     build:
       context: ./usuarios
@@ -6,6 +15,9 @@ services:
     container_name: usuarios
     environment:
       - PORT=3000
+      - MONGO_URL=mongodb://mongo:27017/usuarios_db
+    depends_on:
+      - mongo
     ports:
       - "3001:3000"
 
@@ -34,3 +46,6 @@ services:
       - pedidos
     ports:
       - "3003:3000"
+
+volumes:
+  mongo_data:
