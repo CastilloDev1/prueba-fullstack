@@ -1,0 +1,36 @@
+services:
+  usuarios:
+    build:
+      context: ./usuarios
+      dockerfile: Dockerfile
+    container_name: usuarios
+    environment:
+      - PORT=3000
+    ports:
+      - "3001:3000"
+
+  pedidos:
+    build:
+      context: ./pedidos
+      dockerfile: Dockerfile
+    container_name: pedidos
+    environment:
+      - PORT=3000
+      - USUARIOS_URL=http://usuarios:3000
+    depends_on:
+      - usuarios
+    ports:
+      - "3002:3000"
+
+  pagos:
+    build:
+      context: ./pagos
+      dockerfile: Dockerfile
+    container_name: pagos
+    environment:
+      - PORT=3000
+      - PEDIDOS_URL=http://pedidos:3000
+    depends_on:
+      - pedidos
+    ports:
+      - "3003:3000"
