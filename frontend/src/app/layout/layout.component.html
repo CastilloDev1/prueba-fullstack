@@ -1,0 +1,54 @@
+<div class="layout" [class.sidebar-open]="sidebarOpen()">
+  <!-- Overlay for mobile -->
+  @if (sidebarOpen()) {
+    <div class="sidebar-overlay" (click)="closeSidebar()"></div>
+  }
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <span class="sidebar-logo">🚀</span>
+      <span class="sidebar-title">Fullstack</span>
+    </div>
+
+    <nav class="sidebar-nav">
+      @for (item of auth.menuItems(); track item.route) {
+        <a
+          class="nav-item"
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          (click)="closeSidebar()"
+        >
+          <span class="nav-icon">{{ item.icon }}</span>
+          <span class="nav-label">{{ item.label }}</span>
+        </a>
+      }
+    </nav>
+
+    <div class="sidebar-footer">
+      <div class="user-info">
+        <span class="user-avatar">{{ auth.user()?.role === 'admin' ? '🛡️' : '👤' }}</span>
+        <div class="user-details">
+          <span class="user-name">{{ auth.user()?.username }}</span>
+          <span class="user-role">{{ auth.user()?.role | titlecase }}</span>
+        </div>
+      </div>
+      <button class="btn-logout" (click)="auth.logout()">Salir</button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <div class="main">
+    <header class="topbar">
+      <button class="btn-menu" (click)="toggleSidebar()">☰</button>
+      <div class="topbar-spacer"></div>
+      <button class="btn-theme" (click)="theme.toggle()">
+        {{ theme.isDark() ? '☀️' : '🌙' }}
+      </button>
+    </header>
+
+    <main class="content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

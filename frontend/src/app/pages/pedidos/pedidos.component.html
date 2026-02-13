@@ -1,0 +1,50 @@
+<div class="page">
+  <h1>Pedidos</h1>
+  <p class="page-desc">Consulta pedidos (consume el microservicio de usuarios internamente)</p>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="orderId"
+      placeholder="ID del pedido"
+      (keyup.enter)="search()"
+    />
+    <button class="btn-primary" (click)="search()" [disabled]="loading()">
+      {{ loading() ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  @if (error()) {
+    <div class="alert-error">{{ error() }}</div>
+  }
+
+  @if (order(); as o) {
+    <div class="result-card">
+      <div class="result-header">
+        <span class="result-avatar">📦</span>
+        <div>
+          <h3>Pedido {{ o.id }}</h3>
+          <span class="result-id">Usuario: {{ o.userId }}</span>
+        </div>
+      </div>
+      <div class="result-details">
+        <div class="detail-row">
+          <span class="detail-label">Total</span>
+          <span class="detail-value amount">{{ o.total | number }} {{ o.currency }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Cliente</span>
+          <span class="detail-value">{{ o.user.name }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Email</span>
+          <span class="detail-value">{{ o.user.email }}</span>
+        </div>
+      </div>
+      <div class="result-raw">
+        <strong>Respuesta JSON (incluye datos del usuario resuelto):</strong>
+        <pre>{{ o | json }}</pre>
+      </div>
+    </div>
+  }
+</div>

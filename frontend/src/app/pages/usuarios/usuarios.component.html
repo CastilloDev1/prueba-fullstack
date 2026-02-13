@@ -1,0 +1,46 @@
+<div class="page">
+  <h1>Usuarios</h1>
+  <p class="page-desc">Consulta usuarios desde el microservicio (MongoDB)</p>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      [(ngModel)]="userId"
+      placeholder="ID del usuario (ej: u1, u2)"
+      (keyup.enter)="search()"
+    />
+    <button class="btn-primary" (click)="search()" [disabled]="loading()">
+      {{ loading() ? 'Buscando...' : 'Buscar' }}
+    </button>
+  </div>
+
+  @if (error()) {
+    <div class="alert-error">{{ error() }}</div>
+  }
+
+  @if (user(); as u) {
+    <div class="result-card">
+      <div class="result-header">
+        <span class="result-avatar">👤</span>
+        <div>
+          <h3>{{ u.name }}</h3>
+          <span class="result-id">ID: {{ u._id }}</span>
+        </div>
+      </div>
+      <div class="result-details">
+        <div class="detail-row">
+          <span class="detail-label">Email</span>
+          <span class="detail-value">{{ u.email }}</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Rol</span>
+          <span class="detail-value badge">{{ u.role }}</span>
+        </div>
+      </div>
+      <div class="result-raw">
+        <strong>Respuesta JSON:</strong>
+        <pre>{{ u | json }}</pre>
+      </div>
+    </div>
+  }
+</div>

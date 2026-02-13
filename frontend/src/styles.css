@@ -1,0 +1,91 @@
+/* ── CSS Variables: Light Theme ── */
+:root,
+:root[data-theme='light'] {
+  --bg-primary: #f5f5f7;
+  --bg-card: #ffffff;
+  --bg-sidebar: #ffffff;
+  --bg-input: #ffffff;
+  --bg-hover: #f0f0f2;
+  --text-primary: #1d1d1f;
+  --text-secondary: #6e6e73;
+  --border-color: #d2d2d7;
+  --shadow-color: rgba(0, 0, 0, 0.06);
+  --accent: #0071e3;
+  --accent-hover: #0060c0;
+  --accent-alpha: rgba(0, 113, 227, 0.1);
+  --danger: #d32f2f;
+  --danger-bg: #fdecea;
+}
+
+/* ── CSS Variables: Dark Theme ── */
+:root[data-theme='dark'] {
+  --bg-primary: #1c1c1e;
+  --bg-card: #2c2c2e;
+  --bg-sidebar: #252528;
+  --bg-input: #3a3a3c;
+  --bg-hover: #38383a;
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --border-color: #48484a;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --accent: #0a84ff;
+  --accent-hover: #409cff;
+  --accent-alpha: rgba(10, 132, 255, 0.15);
+  --danger: #ff453a;
+  --danger-bg: rgba(255, 69, 58, 0.15);
+}
+
+/* ── Reset & Base ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+}
+
+input {
+  font-family: inherit;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

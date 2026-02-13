@@ -1,0 +1,26 @@
+<div class="page">
+  <h1>Pagos</h1>
+  <p class="page-desc">Microservicio de pagos (solo admin)</p>
+
+  <button class="btn-primary" (click)="checkHealth()" [disabled]="loading()">
+    {{ loading() ? 'Consultando...' : 'Verificar servicio (health)' }}
+  </button>
+
+  @if (error()) {
+    <div class="alert-error">{{ error() }}</div>
+  }
+
+  @if (health()) {
+    <div class="result-card">
+      <div class="result-header">
+        <span class="result-avatar">💳</span>
+        <h3>Servicio de Pagos</h3>
+      </div>
+      <div class="status-badge ok">Activo</div>
+      <div class="result-raw">
+        <strong>Respuesta:</strong>
+        <pre>{{ health() }}</pre>
+      </div>
+    </div>
+  }
+</div>

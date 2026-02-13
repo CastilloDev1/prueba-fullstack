@@ -1,0 +1,52 @@
+<div class="page">
+  <h1>API Pública</h1>
+  <p class="page-desc">Datos de <a href="https://jsonplaceholder.typicode.com" target="_blank" rel="noopener">jsonplaceholder.typicode.com</a></p>
+
+  <div class="tabs">
+    <button
+      class="tab"
+      [class.active]="activeTab() === 'posts'"
+      (click)="switchTab('posts')"
+    >Posts</button>
+    <button
+      class="tab"
+      [class.active]="activeTab() === 'todos'"
+      (click)="switchTab('todos')"
+    >Todos</button>
+  </div>
+
+  @if (loading()) {
+    <div class="loading">Cargando...</div>
+  }
+
+  @if (error()) {
+    <div class="alert-error">{{ error() }}</div>
+  }
+
+  @if (activeTab() === 'posts' && !loading()) {
+    <div class="grid">
+      @for (post of posts(); track post.id) {
+        <div class="card">
+          <div class="card-top">
+            <span class="card-id">#{{ post.id }}</span>
+            <span class="card-user">User {{ post.userId }}</span>
+          </div>
+          <h3>{{ post.title }}</h3>
+          <p>{{ post.body }}</p>
+        </div>
+      }
+    </div>
+  }
+
+  @if (activeTab() === 'todos' && !loading()) {
+    <div class="todo-list">
+      @for (todo of todos(); track todo.id) {
+        <div class="todo-item" [class.completed]="todo.completed">
+          <span class="todo-check">{{ todo.completed ? '✅' : '⬜' }}</span>
+          <span class="todo-text">{{ todo.title }}</span>
+          <span class="todo-user">User {{ todo.userId }}</span>
+        </div>
+      }
+    </div>
+  }
+</div>

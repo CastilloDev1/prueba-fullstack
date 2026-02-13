@@ -1,0 +1,61 @@
+<div class="dashboard">
+  <h1>{{ greeting() }}</h1>
+  <p class="subtitle">
+    Rol: <span class="badge" [class.badge-admin]="auth.user()?.role === 'admin'">{{ auth.user()?.role | titlecase }}</span>
+  </p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon">👥</div>
+      <div class="card-body">
+        <h3>Usuarios</h3>
+        <p>Gestión de usuarios del sistema</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon">📦</div>
+      <div class="card-body">
+        <h3>Pedidos</h3>
+        <p>Consulta de pedidos y órdenes</p>
+      </div>
+    </div>
+    @if (auth.user()?.role === 'admin') {
+      <div class="card">
+        <div class="card-icon">💳</div>
+        <div class="card-body">
+          <h3>Pagos</h3>
+          <p>Servicio de pagos</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🌐</div>
+        <div class="card-body">
+          <h3>API Pública</h3>
+          <p>Datos de JSONPlaceholder</p>
+        </div>
+      </div>
+    }
+  </div>
+
+  <div class="info-section">
+    <h2>Arquitectura</h2>
+    <div class="arch-grid">
+      <div class="arch-item">
+        <strong>Frontend</strong>
+        <span>Angular 21 · CSS puro</span>
+      </div>
+      <div class="arch-item">
+        <strong>Usuarios</strong>
+        <span>NestJS · MongoDB · :3001</span>
+      </div>
+      <div class="arch-item">
+        <strong>Pedidos</strong>
+        <span>NestJS · HTTP · :3002</span>
+      </div>
+      <div class="arch-item">
+        <strong>Pagos</strong>
+        <span>NestJS · :3003</span>
+      </div>
+    </div>
+  </div>
+</div>

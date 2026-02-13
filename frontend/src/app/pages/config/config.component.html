@@ -1,0 +1,30 @@
+<div class="page">
+  <h1>Configuración</h1>
+  <p class="page-desc">Preferencias de la aplicación (solo admin)</p>
+
+  <div class="settings-card">
+    <div class="setting-row">
+      <div class="setting-info">
+        <h3>Modo oscuro</h3>
+        <p>Cambiar entre tema claro y oscuro</p>
+      </div>
+      <button class="toggle-btn" [class.active]="theme.isDark()" (click)="theme.toggle()">
+        <span class="toggle-knob"></span>
+      </button>
+    </div>
+
+    <div class="setting-row">
+      <div class="setting-info">
+        <h3>Usuario actual</h3>
+        <p>{{ auth.user()?.username }} ({{ auth.user()?.role }})</p>
+      </div>
+    </div>
+
+    <div class="setting-row">
+      <div class="setting-info">
+        <h3>Versión</h3>
+        <p>Prueba Fullstack v1.0.0</p>
+      </div>
+    </div>
+  </div>
+</div>

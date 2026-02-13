@@ -1,0 +1,35 @@
+.page h1 { margin: 0 0 0.25rem; color: var(--text-primary); }
+.page-desc { color: var(--text-secondary); margin: 0 0 1.5rem; font-size: 0.9rem; }
+
+.btn-primary {
+  padding: 0.65rem 1.25rem; background: var(--accent); color: #fff; border: none;
+  border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s;
+  margin-bottom: 1.5rem;
+}
+.btn-primary:hover:not(:disabled) { background: var(--accent-hover); }
+.btn-primary:disabled { opacity: 0.6; cursor: not-allowed; }
+
+.alert-error {
+  background: var(--danger-bg); color: var(--danger); padding: 0.65rem 0.85rem;
+  border-radius: 8px; font-size: 0.875rem; margin-bottom: 1rem; max-width: 500px;
+}
+
+.result-card {
+  background: var(--bg-card); border: 1px solid var(--border-color);
+  border-radius: 12px; padding: 1.5rem; max-width: 500px;
+}
+
+.result-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+.result-avatar { font-size: 2rem; }
+.result-header h3 { margin: 0; color: var(--text-primary); }
+
+.status-badge {
+  display: inline-block; padding: 0.3rem 0.75rem; border-radius: 999px;
+  font-size: 0.8rem; font-weight: 600; margin-bottom: 1rem;
+}
+.status-badge.ok { background: #d1fae5; color: #065f46; }
+:root[data-theme='dark'] .status-badge.ok { background: #064e3b; color: #6ee7b7; }
+
+.result-raw { background: var(--bg-primary); border-radius: 8px; padding: 0.85rem; }
+.result-raw strong { display: block; margin-bottom: 0.5rem; font-size: 0.8rem; color: var(--text-secondary); }
+.result-raw pre { margin: 0; font-size: 0.8rem; color: var(--text-primary); white-space: pre-wrap; }
