@@ -55,6 +55,14 @@ Servicio de pagos con health check y monitoreo.
 | GET | `/api/v1/health` | Health check |
 | GET | `/api/v1/status` | Estado del servicio |
 
+##  API Pública Utilizada
+
+Endpoint utilizado:
+GET https://jsonplaceholder.typicode.com/posts
+
+La información se muestra en la vista "API Pública" del frontend.
+
+
 ## Quick Start
 
 ### Con Docker (recomendado)
@@ -96,6 +104,27 @@ Aplicación Angular con sistema de autenticación basado en roles:
 |---------|-----------|-----|--------|
 | `admin` | `admin123` | Admin | Dashboard, Usuarios, Pedidos, Pagos, API Pública, Configuración |
 | `user` | `user123` | User | Dashboard, Usuarios, Pedidos |
+
+## 🖼 Capturas de Pantalla
+
+### Login
+![Login](architecture/login-dark.png)
+
+### Login Light
+![Login](architecture/login-light.png)
+
+### Rol Usuario (3 items)
+![User](architecture/dashboard-user.png)
+
+### Rol Admin (5 items)
+![Admin](architecture/dashboard-dark.png)
+
+### Rol Admin Light
+![Admin-Light](architecture/dashboard-light.png)
+
+### Orders consumiendo Backend
+![Orders](architecture/pedidos-dark.png)
+
 
 **Características:**
 - Tema claro/oscuro con persistencia en localStorage
