@@ -7,7 +7,7 @@ docker compose up --build
 ```
 
 ## Arquitectura
-![Arquitectura](docs/images/architecture.png)
+![Arquitectura](architecture/architecture.png)
 
 ## Decisiones Técnicas
 
